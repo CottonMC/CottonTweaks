@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "io.github.cottonmc.cottontweaks.mixin",
+  "plugin": "io.github.cottonmc.cottontweaks.CottonMixinPlugin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MainMenuScreenMixin",
+    "SplashScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

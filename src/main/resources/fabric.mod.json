@@ -1,0 +1,16 @@
+{
+  "id": "cottontweaks",
+  "name": "Cotton Tweaks",
+  "version": "0.0.1",
+  "side": "universal",
+  "initializers": [
+    "io.github.cottonmc.cottontweaks.CottonTweaks"
+  ],
+  "requires": {
+    "fabric": "*"
+  },
+  "mixins": {
+    "client": "mixins.cottontweaks.client.json",
+    "common": "mixins.cottontweaks.common.json"
+  }
+}

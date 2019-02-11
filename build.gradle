@@ -1,0 +1,128 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+buildscript {
+	repositories {
+		mavenCentral()
+		jcenter()
+		maven {
+			name = "Fabric"
+			url = "http://maven.modmuss50.me/"
+		}
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "net.fabricmc:fabric-loom:0.2.0-SNAPSHOT" //Don't backdate before 0.2.0; features in this version prevent messy workarounds!
+		classpath "com.github.jengelman.gradle.plugins:shadow:2.0.0"
+	}
+}
+
+plugins {
+	id "com.jfrog.artifactory" version "4.9.0"
+}
+
+apply plugin: "maven-publish"
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: net.fabricmc.loom.LoomGradlePlugin
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+archivesBaseName = "cotton-tweaks"
+group = "io.github.cottonmc"
+
+version = "0.0.1+19w06a"
+
+repositories {
+	mavenCentral()
+	maven {
+		//cotton
+		url "http://server.bbkr.space:8081/artifactory/libs-snapshot"
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:19w06a"
+	mappings "net.fabricmc:yarn:19w06a.3"
+	modCompile "net.fabricmc:fabric-loader:0.3.5.106"
+
+	// Fabric API. This is technically optional, but you probably want it anyway.
+	modCompile "net.fabricmc:fabric:0.2.0.89"
+
+	//the main cotton api.
+	modCompile "io.github.cottonmc:cotton:0.0.2+19w05a-SNAPSHOT"
+
+	//modCompile "io.github.prospector.silk:SilkAPI:1.0.0-25"
+
+}
+
+if(rootProject.file('private.gradle').exists()) { //gives people more ways to configure the project for publish
+	apply from: 'private.gradle'
+}
+
+artifactory {
+	if (project.hasProperty("artifactoryUsername")) {
+		contextUrl = 'http://server.bbkr.space:8081/artifactory/'
+		publish {
+			repository {
+			if(version.contains("SNAPSHOT")){
+					repoKey = "libs-snapshot-local"
+				}else{
+					repoKey = "libs-release-local"
+				}
+				username = artifactoryUsername
+				password = artifactoryPassword
+			}
+			defaults {
+				publications('maven')
+
+				publishArtifacts = true
+				publishPom = true
+			}
+		}
+	}
+}
+
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from components.java
+
+			artifactId = "cotton-tweaks"
+
+			pom.withXml {
+				def pomFile = asNode()
+				def depsNode = pomFile.get("dependencies")
+				pomFile.remove(depsNode)
+
+				def newDeps = pomFile.appendNode("dependencies")
+				configurations.modCompile.getResolvedConfiguration().getFirstLevelModuleDependencies().each {
+					def artifactNode = newDeps.appendNode("dependency")
+					artifactNode.appendNode('groupId', it.moduleGroup)
+					artifactNode.appendNode('artifactId', it.moduleName)
+					artifactNode.appendNode('version', it.moduleVersion)
+				}
+			}
+			artifacts = [
+				artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${version}.jar") { //release jar - file location not provided anywhere in loom
+					classifier null
+					builtBy remapJar
+				},
+				artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${version}-dev.jar") { //release jar - file location not provided anywhere in loom
+					classifier "dev"
+					builtBy remapJar
+				},
+				artifact (sourcesJar)
+			]
+		}
+	}
+}
+
+task sourcesJar(type: Jar) {
+	baseName = archivesBaseName
+	classifier = "sources"
+	from sourceSets.main.allSource
+	from sourceSets.main.resources
+}
