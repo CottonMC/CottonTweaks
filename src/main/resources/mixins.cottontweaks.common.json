@@ -5,7 +5,11 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "DispenserBlockMixin",
-    "TorchBlockMixin"
+    "TorchBlockMixin",
+    "SandBlockMixin",
+    "CauldronBlockMixin",
+    "BucketItemMixin",
+    "EntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

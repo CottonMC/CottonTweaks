@@ -38,4 +38,10 @@ public class TweakConfig {
     public int loading_bar_colour_green = 40;
 
     public int loading_bar_colour_blue = 255;
+
+    @Comment("Enable lava in cauldrons.")
+    public boolean enable_cauldron_lava = true;
+
+    @Comment("Enable wet sand.")
+    public boolean enable_wet_sand = true;
 }

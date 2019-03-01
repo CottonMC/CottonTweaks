@@ -1,6 +1,6 @@
 package io.github.cottonmc.cottontweaks.tweaks;
 
-import io.github.cottonmc.cottontweaks.Cotton;
+import io.github.cottonmc.cottontweaks.CottonTweaks;
 import io.github.cottonmc.cottontweaks.Plantable;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.DispenserBehavior;
@@ -41,7 +41,7 @@ public class Tweaks {
     public static void initialize() {
         if (CottonTweaks.config.include_tweaks) {
             CottonTweaks.logger.info("Tweaks initialized.");
-            if (Cotton.config.enable_dispenser_tweaks) {
+            if (CottonTweaks.config.enable_dispenser_tweaks) {
                 registerDispenserSeedPlanting();
             }
         }
