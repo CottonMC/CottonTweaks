@@ -18,4 +18,10 @@ public class TweakConfig {
     @Comment("Tweaks: Enable the shape-based torch placement algorithm. " +
             "Allows you to place torches on more blocks.")
     public boolean enable_custom_torch_placement = true;
+
+    @Comment("Enable lava in cauldrons.")
+    public boolean enable_cauldron_lava = true;
+
+    @Comment("Enable wet sand.")
+    public boolean enable_wet_sand = true;
 }

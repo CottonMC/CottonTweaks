@@ -23,7 +23,10 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     private static final ImmutableMap<String, BooleanSupplier> MIXIN_STATES =
         ImmutableMap.of(
                 PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_custom_torch_placement,
-                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_place_blocks
+                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_place_blocks,
+                PACKAGE + ".SplashScreenMixin", () -> CONFIG.include_tweaks && CONFIG.enable_coloured_loading_bar,
+                PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_cauldron_lava,
+                PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand
         );
 
     @Override

@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "waterlogged=false": [
+            { "model": "block/sand" },
+            { "model": "block/sand", "y": 90 },
+            { "model": "block/sand", "y": 180 },
+            { "model": "block/sand", "y": 270 }
+        ],
+        "waterlogged=true": [
+            { "model": "cottontweaks:block/sand_wet" },
+            { "model": "cottontweaks:block/sand_wet", "y": 90 },
+            { "model": "cottontweaks:block/sand_wet", "y": 180 },
+            { "model": "cottontweaks:block/sand_wet", "y": 270 }
+        ]
+    }
+}
