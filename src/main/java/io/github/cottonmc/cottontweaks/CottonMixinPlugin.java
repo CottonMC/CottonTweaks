@@ -2,7 +2,6 @@ package io.github.cottonmc.cottontweaks;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.cottonmc.cotton.config.ConfigManager;
-import io.github.cottonmc.cottontweaks.TweakConfig;
 import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -22,10 +21,10 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     private static final TweakConfig CONFIG = ConfigManager.loadConfig(TweakConfig.class);
     private static final ImmutableMap<String, BooleanSupplier> MIXIN_STATES =
         ImmutableMap.of(
-                PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_custom_torch_placement,
-                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_place_blocks,
-                PACKAGE + ".SplashScreenMixin", () -> CONFIG.include_tweaks && CONFIG.enable_coloured_loading_bar,
-                PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_cauldron_lava,
+                PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.custom_torch_placement,
+                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.dispenser_place_blocks,
+                PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint,
+                PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons,
                 PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand
         );
 
