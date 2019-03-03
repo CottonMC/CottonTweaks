@@ -1,7 +1,6 @@
 package io.github.cottonmc.cottontweaks.mixin;
 
 import io.github.cottonmc.cottontweaks.CottonTweaks;
-import io.github.cottonmc.cottontweaks.Splashes;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.MainMenuScreen;

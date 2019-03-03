@@ -8,7 +8,7 @@ import net.fabricmc.api.ModInitializer;
 
 public class CottonTweaks implements ModInitializer {
 
-	public static final String MODID = "cottontweaks";
+	public static final String MODID = "cotton-tweaks";
 
 	public static ModLogger logger = new ModLogger(MODID, "COTTON TWEAKS");
 	public static TweakConfig config;
@@ -21,7 +21,6 @@ public class CottonTweaks implements ModInitializer {
 		config = ConfigManager.loadConfig(TweakConfig.class);
 		logger.info("loaded config");
 		Tweaks.initialize();
-		Splashes.initialize();
 
 	}
 }
