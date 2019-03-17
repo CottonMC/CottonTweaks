@@ -4,10 +4,9 @@
   "plugin": "io.github.cottonmc.cottontweaks.CottonMixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MainMenuScreenMixin",
-    "SplashScreenMixin",
     "BlockModelsMixin",
-    "ChunkRendererMixin"
+    "ChunkRendererMixin",
+    "ItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1,

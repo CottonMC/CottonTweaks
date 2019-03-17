@@ -69,7 +69,7 @@ public final class FluidProperty extends AbstractProperty<FluidProperty.Wrapper>
             }
 
             Identifier id = new Identifier(namespace, path);
-            if (Registry.FLUID.contains(id)) {
+            if (Registry.FLUID.containsId(id)) {
                 Wrapper fluid = new Wrapper(Registry.FLUID.get(id));
                 if (getValues().contains(fluid))
                     return Optional.of(fluid);

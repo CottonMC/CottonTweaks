@@ -21,10 +21,10 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     private static final TweakConfig CONFIG = ConfigManager.loadConfig(TweakConfig.class);
     private static final ImmutableMap<String, BooleanSupplier> MIXIN_STATES =
         ImmutableMap.<String, BooleanSupplier>builder()
-                .put(PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_custom_torch_placement)
-                .put(PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_place_blocks)
-                .put(PACKAGE + ".SplashScreenMixin", () -> CONFIG.include_tweaks && CONFIG.enable_coloured_loading_bar)
-                .put(PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_cauldron_lava)
+                .put(PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.custom_torch_placement)
+                .put(PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.dispenser_place_blocks)
+                .put(PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint)
+                .put(PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons)
                 .put(PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
                 .put(PACKAGE + ".SnowyBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
                 .put(PACKAGE + ".WettableBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
