@@ -23,10 +23,10 @@ public class TweakConfig {
     public boolean lava_in_cauldrons = true;
 
     @Comment("Enable wet blocks.")
-    public boolean enable_wet_blocks = true;
+    public boolean wet_blocks = true;
 
-    @Comment("Enable world effects for wet blocks (drying, getting wet from rain).")
-    public boolean enable_wet_block_world_effects = true;
+    @Comment("Enable ticking world effects for wet blocks (drying, getting wet from rain).")
+    public boolean wet_block_ticking = true;
 
     @Comment("Enable reduced potion glint")
     public boolean reduced_potion_glint = true;

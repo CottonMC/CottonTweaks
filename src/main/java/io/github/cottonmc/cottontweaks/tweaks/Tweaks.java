@@ -48,7 +48,7 @@ public class Tweaks {
                 registerDispenserSeedPlanting();
             }
 
-            if (CottonTweaks.config.enable_wet_blocks) {
+            if (CottonTweaks.config.wet_blocks) {
                 Registry.register(Registry.BLOCK, new Identifier("cottontweaks", "wet_overlay_dummy"), new Block(Block.Settings.copy(Blocks.STONE)));
             }
         }

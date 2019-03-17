@@ -1,5 +1,6 @@
-package io.github.cottonmc.cottontweaks.api;
+package io.github.cottonmc.cottontweaks;
 
+import io.github.cottonmc.cottontweaks.CottonTweaks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
@@ -46,7 +47,7 @@ public interface Wettable extends Waterloggable {
      * Randomly makes some wettable blocks wet when it rains.
      */
     static void onRainTick(World world, BlockPos pos) {
-        if (world.getRandom().nextInt(5) == 0) {
+        if (CottonTweaks.config.wet_block_ticking && world.getRandom().nextInt(5) == 0) {
             world.setBlockState(pos, world.getBlockState(pos).with(Properties.WATERLOGGED, true));
         }
     }
@@ -55,7 +56,7 @@ public interface Wettable extends Waterloggable {
      * Randomly makes some wettable blocks dry when it doesn't rain.
      */
     static void onRandomTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (random.nextInt(16) == 0 && !world.isRaining()) {
+        if (CottonTweaks.config.wet_block_ticking && random.nextInt(16) == 0 && !world.isRaining()) {
             world.setBlockState(pos, world.getBlockState(pos).with(Properties.WATERLOGGED, false));
         }
     }

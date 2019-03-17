@@ -1,10 +1,9 @@
 package io.github.cottonmc.cottontweaks.mixin;
 
-import io.github.cottonmc.cottontweaks.api.Wettable;
+import io.github.cottonmc.cottontweaks.Wettable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SandBlock;
 import net.minecraft.class_852;
 import net.minecraft.class_853;
 import net.minecraft.client.render.block.BlockRenderManager;

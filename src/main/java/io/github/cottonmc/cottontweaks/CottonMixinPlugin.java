@@ -25,11 +25,11 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
                 .put(PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.dispenser_place_blocks)
                 .put(PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint)
                 .put(PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons)
-                .put(PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
-                .put(PACKAGE + ".SnowyBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
-                .put(PACKAGE + ".WettableBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
-                .put(PACKAGE + ".BlockModelsMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
-                .put(PACKAGE + ".ChunkRendererMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
+                .put(PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.wet_blocks)
+                .put(PACKAGE + ".SnowyBlockMixin", () -> CONFIG.include_tweaks && CONFIG.wet_blocks)
+                .put(PACKAGE + ".WettableBlockMixin", () -> CONFIG.include_tweaks && CONFIG.wet_blocks)
+                .put(PACKAGE + ".BlockModelsMixin", () -> CONFIG.include_tweaks && CONFIG.wet_blocks)
+                .put(PACKAGE + ".ChunkRendererMixin", () -> CONFIG.include_tweaks && CONFIG.wet_blocks)
                 .build();
 
     @Override

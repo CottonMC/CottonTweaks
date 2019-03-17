@@ -1,6 +1,6 @@
 package io.github.cottonmc.cottontweaks.mixin;
 
-import io.github.cottonmc.cottontweaks.api.Wettable;
+import io.github.cottonmc.cottontweaks.Wettable;
 import net.minecraft.block.*;
 import net.minecraft.entity.VerticalEntityPosition;
 import net.minecraft.item.ItemPlacementContext;

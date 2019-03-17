@@ -1,6 +1,6 @@
 package io.github.cottonmc.cottontweaks.mixin;
 
-import io.github.cottonmc.cottontweaks.api.Wettable;
+import io.github.cottonmc.cottontweaks.Wettable;
 import io.github.cottonmc.cottontweaks.client.WettableModels;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.block.BlockModels;
