@@ -2,12 +2,15 @@ package io.github.cottonmc.cottontweaks.tweaks;
 
 import io.github.cottonmc.cottontweaks.CottonTweaks;
 import io.github.cottonmc.cottontweaks.Plantable;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.DispenserBehavior;
 import net.minecraft.item.FoodCropItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.SeedsItem;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -43,6 +46,10 @@ public class Tweaks {
             CottonTweaks.logger.info("Tweaks initialized.");
             if (CottonTweaks.config.enable_dispenser_tweaks) {
                 registerDispenserSeedPlanting();
+            }
+
+            if (CottonTweaks.config.enable_wet_blocks) {
+                Registry.register(Registry.BLOCK, new Identifier("cottontweaks", "wet_overlay_dummy"), new Block(Block.Settings.copy(Blocks.STONE)));
             }
         }
     }

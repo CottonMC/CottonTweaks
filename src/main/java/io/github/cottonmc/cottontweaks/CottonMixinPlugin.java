@@ -2,7 +2,6 @@ package io.github.cottonmc.cottontweaks;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.cottonmc.cotton.config.ConfigManager;
-import io.github.cottonmc.cottontweaks.TweakConfig;
 import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -21,13 +20,17 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     // That won't be done yet when this class loads.
     private static final TweakConfig CONFIG = ConfigManager.loadConfig(TweakConfig.class);
     private static final ImmutableMap<String, BooleanSupplier> MIXIN_STATES =
-        ImmutableMap.of(
-                PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_custom_torch_placement,
-                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_place_blocks,
-                PACKAGE + ".SplashScreenMixin", () -> CONFIG.include_tweaks && CONFIG.enable_coloured_loading_bar,
-                PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_cauldron_lava,
-                PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand
-        );
+        ImmutableMap.<String, BooleanSupplier>builder()
+                .put(PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_custom_torch_placement)
+                .put(PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_place_blocks)
+                .put(PACKAGE + ".SplashScreenMixin", () -> CONFIG.include_tweaks && CONFIG.enable_coloured_loading_bar)
+                .put(PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_cauldron_lava)
+                .put(PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
+                .put(PACKAGE + ".SnowyBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
+                .put(PACKAGE + ".WettableBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
+                .put(PACKAGE + ".BlockModelsMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
+                .put(PACKAGE + ".ChunkRendererMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_blocks)
+                .build();
 
     @Override
     public void onLoad(String mixinPackage) {

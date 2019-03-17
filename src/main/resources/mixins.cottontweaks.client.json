@@ -5,9 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MainMenuScreenMixin",
-    "SplashScreenMixin"
+    "SplashScreenMixin",
+    "BlockModelsMixin",
+    "ChunkRendererMixin"
   ],
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 1,
+    "maxShiftBy": 2
   }
 }

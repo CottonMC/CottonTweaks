@@ -1,6 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "cottontweaks:block/red_sand_wet"
-    }
-}
