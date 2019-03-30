@@ -21,8 +21,7 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     private static final TweakConfig CONFIG = ConfigManager.loadConfig(TweakConfig.class);
     private static final ImmutableMap<String, BooleanSupplier> MIXIN_STATES =
         ImmutableMap.of(
-                PACKAGE + ".TorchBlockMixin", () -> CONFIG.include_tweaks && CONFIG.custom_torch_placement,
-                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.dispenser_place_blocks,
+                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_tweaks,
                 PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint,
                 PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons,
                 PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand

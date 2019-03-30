@@ -23,12 +23,12 @@ public abstract class EntityMixin {
     public World world;
 
     @Shadow
-    public abstract BlockPos getPos();
+    public abstract BlockPos getBlockPos();
 
     @Inject(method = "isTouchingLava", at = @At("RETURN"), cancellable = true)
     private void isTouchingLava(CallbackInfoReturnable<Boolean> info) {
         if (!info.getReturnValue()) {
-            BlockState state = world.getBlockState(getPos());
+            BlockState state = world.getBlockState(getBlockPos());
             boolean insideLavaCauldron = state.getBlock() instanceof CauldronBlock &&
                 state.get(FluidProperty.VANILLA_FLUIDS).getFluid() == Fluids.LAVA;
             boolean insideLavaFluidState = state.getFluidState().getFluid() == Fluids.LAVA;

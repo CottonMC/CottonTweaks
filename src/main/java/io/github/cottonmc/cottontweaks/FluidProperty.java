@@ -49,26 +49,7 @@ public final class FluidProperty extends AbstractProperty<FluidProperty.Wrapper>
             throw new IllegalArgumentException("str must not be empty or null!");
 
         try {
-            char first = str.charAt(0);
-            String namespace;
-            String path;
-
-            // Format A: 9_minecraftwater
-            // For compat with old Watered Down
-            // TODO Can be removed in a future release, probably?
-            if (Character.isDigit(first)) {
-                int underscore = str.indexOf('_');
-                int namespaceLength = Integer.parseInt(str.substring(0, underscore));
-                namespace = str.substring(underscore + 1, underscore + 1 + namespaceLength);
-                path = str.substring(underscore + 1 + namespaceLength);
-            } else { // Format B: minecraft_water_9
-                int underscore = str.lastIndexOf('_');
-                int namespaceLength = Integer.parseInt(str.substring(underscore + 1));
-                namespace = str.substring(0, namespaceLength);
-                path = str.substring(namespaceLength + 1, underscore);
-            }
-
-            Identifier id = new Identifier(namespace, path);
+            Identifier id = new Identifier(str);
             if (Registry.FLUID.containsId(id)) {
                 Wrapper fluid = new Wrapper(Registry.FLUID.get(id));
                 if (getValues().contains(fluid))
@@ -81,8 +62,9 @@ public final class FluidProperty extends AbstractProperty<FluidProperty.Wrapper>
 
     @Override
     public String getValueAsString(Wrapper var1) {
+        // Requires StateFactoryMixin
         Identifier id = Registry.FLUID.getId(var1.get());
-        return String.format("%s_%s_%d", id.getNamespace(), id.getPath(), id.getNamespace().length());
+        return id.toString();
     }
 
     @Override

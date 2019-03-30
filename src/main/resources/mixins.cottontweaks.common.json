@@ -9,7 +9,8 @@
     "SandBlockMixin",
     "CauldronBlockMixin",
     "BucketItemMixin",
-    "EntityMixin"
+    "EntityMixin",
+    "StateFactoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
