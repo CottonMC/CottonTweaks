@@ -5,12 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "DispenserBlockMixin",
-    "TorchBlockMixin",
     "SandBlockMixin",
     "CauldronBlockMixin",
     "BucketItemMixin",
     "EntityMixin",
-    "StateFactoryMixin"
+    "StateFactoryMixin",
+    "PhantomSpawnerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

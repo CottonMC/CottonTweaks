@@ -24,7 +24,8 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
                 PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_tweaks,
                 PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint,
                 PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons,
-                PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand
+                PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand,
+                PACKAGE + ".PhantomSpawnerMixin", () -> CONFIG.include_tweaks && CONFIG.enable_phantom_spawning
         );
 
     @Override

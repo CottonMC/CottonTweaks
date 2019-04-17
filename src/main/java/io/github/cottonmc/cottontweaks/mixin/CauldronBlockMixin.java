@@ -103,7 +103,7 @@ public abstract class CauldronBlockMixin extends Block implements FluidDrainable
             return;
 
         stack.subtractAmount(1);
-        world.playSound(player, pos, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCK, 1f, 1f);
+        world.playSound(player, pos, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1f, 1f);
         world.setBlockState(pos, state.with(LEVEL, lavaLevel - 1));
         setFluidFromLevel(world, pos);
         info.setReturnValue(true);
@@ -124,7 +124,7 @@ public abstract class CauldronBlockMixin extends Block implements FluidDrainable
 
                 player.increaseStat(Stats.FILL_CAULDRON);
                 placeFluid(world, pos, state, 3, new FluidProperty.Wrapper(((FluidAccessor) item).cotton_getFluid()));
-                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCK, 1.0F, 1.0F);
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
 
             info.setReturnValue(true);
