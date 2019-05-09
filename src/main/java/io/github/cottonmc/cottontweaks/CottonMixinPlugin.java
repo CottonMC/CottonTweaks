@@ -20,13 +20,12 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     // That won't be done yet when this class loads.
     private static final TweakConfig CONFIG = ConfigManager.loadConfig(TweakConfig.class);
     private static final ImmutableMap<String, BooleanSupplier> MIXIN_STATES =
-        ImmutableMap.of(
-                PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_tweaks,
-                PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint,
-                PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons,
-                PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand,
-                PACKAGE + ".PhantomSpawnerMixin", () -> CONFIG.include_tweaks && CONFIG.disable_phantom_spawning
-        );
+        new ImmutableMap.Builder<String, BooleanSupplier>().put(PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_tweaks).
+                put(PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint).
+                put(PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons).
+                put(PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand).
+                put(PACKAGE + ".PhantomSpawnerMixin", () -> CONFIG.include_tweaks && CONFIG.disable_phantom_spawning)
+        .build();
 
     @Override
     public void onLoad(String mixinPackage) {
