@@ -21,6 +21,6 @@ public class TweakConfig {
     @Comment("Enable reduced potion glint")
     public boolean reduced_potion_glint = true;
 
-    @Comment("Enable this to get rid of those annoying Phantoms")
+    @Comment("Enable this to get rid of those annoying Phantoms, except in the End.")
     public boolean disable_phantom_spawning = true;
 }
