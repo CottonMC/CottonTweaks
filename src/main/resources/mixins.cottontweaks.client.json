@@ -3,8 +3,8 @@
   "package": "io.github.cottonmc.cottontweaks.mixin",
   "plugin": "io.github.cottonmc.cottontweaks.CottonMixinPlugin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-
+  "client": [
+    "BiomeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

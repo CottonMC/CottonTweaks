@@ -1,16 +1,19 @@
 {
+  "schemaVersion": 1,
   "id": "cottontweaks",
   "name": "Cotton Tweaks",
   "version": "0.0.4",
   "side": "universal",
-  "initializers": [
-    "io.github.cottonmc.cottontweaks.CottonTweaks"
-  ],
-  "requires": {
+  "entrypoints": {
+    "main": [
+      "io.github.cottonmc.cottontweaks.CottonTweaks"
+    ]
+  },
+  "depends": {
     "fabric": "*"
   },
-  "mixins": {
-    "client": "mixins.cottontweaks.client.json",
-    "common": "mixins.cottontweaks.common.json"
-  }
+  "mixins": [
+    "mixins.cottontweaks.client.json",
+    "mixins.cottontweaks.common.json"
+  ]
 }

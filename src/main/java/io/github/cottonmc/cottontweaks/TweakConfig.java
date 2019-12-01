@@ -23,4 +23,16 @@ public class TweakConfig {
 
     @Comment("Enable this to get rid of those annoying Phantoms.")
     public boolean disable_phantom_spawning = true;
+
+    @Comment("Enable the greener grass feature.")
+    public boolean enable_greener_grass = true;
+
+    @Comment("How much to shift grass/foliage colour on the red component.")
+    public int shift_r = -30;
+
+    @Comment("How much to shift grass/foliage colour on the green component.")
+    public int shift_g = 30;
+
+    @Comment("How much to shift grass/foliage colour on the blue component.")
+    public int shift_b = -30;
 }

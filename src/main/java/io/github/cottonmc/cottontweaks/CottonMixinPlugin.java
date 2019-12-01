@@ -24,8 +24,9 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
                     //put(PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint).
                     put(PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons).
                     put(PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand).
-                    put(PACKAGE + ".PhantomSpawnerMixin", () -> CONFIG.include_tweaks && CONFIG.disable_phantom_spawning)
-                    .build();
+                    put(PACKAGE + ".PhantomSpawnerMixin", () -> CONFIG.include_tweaks && CONFIG.disable_phantom_spawning).
+                    put(PACKAGE + ".BiomeMixin", () -> CONFIG.include_tweaks && CONFIG.enable_greener_grass).
+                    build();
 
     @Override
     public void onLoad(String mixinPackage) {
