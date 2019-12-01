@@ -1,11 +1,7 @@
 package io.github.cottonmc.cottontweaks.mixin;
 
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.source.TheEndBiomeSource;
-import net.minecraft.world.dimension.TheEndDimension;
 import net.minecraft.world.gen.PhantomSpawner;
-import net.minecraft.world.gen.chunk.FloatingIslandsChunkGenerator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

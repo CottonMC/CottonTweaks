@@ -1,14 +1,14 @@
 ext {
 	projectName = "cotton-tweaks"
 	group = "io.github.cottonmc"
-	version = "0.0.3+1.14"
+	version = "0.0.4+1.14.4"
 	snapshot = true
 
 	minecraft = "1.14.4"
 	mappings = "1.14.4+build.15:v2"
 	loader = "0.7.2+build.174"
 	fabricMod = "0.4.1+build.245-1.14"
-	cotton = "0.6.4+1.14-SNAPSHOT"
+	cotton = "1.0.0-rc.3"
 	silkMod = null
 	jankson = "1.1.0" //If needsShadow is false, jankson will not be included!
 

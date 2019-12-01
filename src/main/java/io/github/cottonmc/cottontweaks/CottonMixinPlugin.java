@@ -2,6 +2,7 @@ package io.github.cottonmc.cottontweaks;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.cottonmc.cotton.config.ConfigManager;
+import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
@@ -20,7 +21,7 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     private static final TweakConfig CONFIG = ConfigManager.loadConfig(TweakConfig.class);
     private static final ImmutableMap<String, BooleanSupplier> MIXIN_STATES =
             new ImmutableMap.Builder<String, BooleanSupplier>().put(PACKAGE + ".DispenserBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_dispenser_tweaks).
-                    put(PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint).
+                    //put(PACKAGE + ".ItemRendererMixin", () -> CONFIG.include_tweaks && CONFIG.reduced_potion_glint).
                     put(PACKAGE + ".CauldronBlockMixin", () -> CONFIG.include_tweaks && CONFIG.lava_in_cauldrons).
                     put(PACKAGE + ".SandBlockMixin", () -> CONFIG.include_tweaks && CONFIG.enable_wet_sand).
                     put(PACKAGE + ".PhantomSpawnerMixin", () -> CONFIG.include_tweaks && CONFIG.disable_phantom_spawning)
@@ -51,12 +52,12 @@ public class CottonMixinPlugin implements IMixinConfigPlugin {
     }
 
     @Override
-    public void preApply(String targetClassName, org.objectweb.asm.tree.ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
         //nothing
     }
 
     @Override
-    public void postApply(String targetClassName, org.objectweb.asm.tree.ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
         //nothing
     }
 

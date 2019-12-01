@@ -4,7 +4,7 @@
   "plugin": "io.github.cottonmc.cottontweaks.CottonMixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ItemRendererMixin"
+
   ],
   "injectors": {
     "defaultRequire": 1

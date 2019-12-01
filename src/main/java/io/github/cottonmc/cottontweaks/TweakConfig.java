@@ -1,7 +1,7 @@
 package io.github.cottonmc.cottontweaks;
 
+import blue.endless.jankson.Comment;
 import io.github.cottonmc.cotton.config.annotations.ConfigFile;
-import io.github.cottonmc.repackage.blue.endless.jankson.Comment;
 
 @ConfigFile(name="TweakConfig")
 public class TweakConfig {
@@ -18,9 +18,9 @@ public class TweakConfig {
     @Comment("Enable wet sand.")
     public boolean enable_wet_sand = true;
 
-    @Comment("Enable reduced potion glint")
-    public boolean reduced_potion_glint = true;
+    //@Comment("Enable reduced potion glint")
+    //public boolean reduced_potion_glint = true;
 
-    @Comment("Enable this to get rid of those annoying Phantoms, except in the End.")
+    @Comment("Enable this to get rid of those annoying Phantoms.")
     public boolean disable_phantom_spawning = true;
 }
