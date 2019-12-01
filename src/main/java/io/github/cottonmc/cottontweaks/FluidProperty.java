@@ -55,13 +55,13 @@ public final class FluidProperty extends AbstractProperty<FluidProperty.Wrapper>
                 if (getValues().contains(fluid))
                     return Optional.of(fluid);
             }
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
 
         return Optional.empty();
     }
 
     @Override
-    public String getValueAsString(Wrapper var1) {
+    public String getName(Wrapper var1) {
         // Requires StateFactoryMixin
         Identifier id = Registry.FLUID.getId(var1.get());
         return id.toString();

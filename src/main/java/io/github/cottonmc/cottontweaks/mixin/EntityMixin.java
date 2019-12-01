@@ -1,7 +1,6 @@
 package io.github.cottonmc.cottontweaks.mixin;
 
 import io.github.cottonmc.cottontweaks.FluidProperty;
-import net.fabricmc.fabric.api.event.world.WorldTickCallback;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CauldronBlock;
 import net.minecraft.entity.Entity;
@@ -26,7 +25,7 @@ public abstract class EntityMixin {
     @Shadow
     public abstract BlockPos getBlockPos();
 
-    @Inject(method = "isTouchingLava", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "isInLava", at = @At("RETURN"), cancellable = true)
     private void isTouchingLava(CallbackInfoReturnable<Boolean> info) {
         if (!info.getReturnValue()) {
             BlockState state = world.getBlockState(getBlockPos());
@@ -37,7 +36,7 @@ public abstract class EntityMixin {
         }
     }
 
-    @Redirect(method = "isInFluid(Lnet/minecraft/tag/Tag;Z)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"))
+    @Redirect(method = "isSubmergedIn(Lnet/minecraft/tag/Tag;Z)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getFluidState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/fluid/FluidState;"))
     private FluidState getFluidStateProxy(World world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);
 

@@ -17,7 +17,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateFactory;
-import net.minecraft.state.property.IntegerProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -25,7 +25,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
@@ -39,7 +41,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(CauldronBlock.class)
 public abstract class CauldronBlockMixin extends Block implements FluidDrainable {
     @Shadow @Final
-    public static IntegerProperty LEVEL;
+    public static IntProperty LEVEL;
     private static final FluidProperty FLUID = FluidProperty.VANILLA_FLUIDS;
 
     CauldronBlockMixin(Settings settings) {
@@ -70,7 +72,7 @@ public abstract class CauldronBlockMixin extends Block implements FluidDrainable
 
     @Inject(at = @At("RETURN"), method = "appendProperties", cancellable = true)
     private void onAppendProperties(StateFactory.Builder<Block, BlockState> var1, CallbackInfo info) {
-        var1.with(FLUID);
+        var1.add(FLUID);
     }
 
     @Inject(method = "setLevel", at = @At("HEAD"), cancellable = true)
@@ -102,7 +104,7 @@ public abstract class CauldronBlockMixin extends Block implements FluidDrainable
         if (lavaLevel == 0 || stack.getItem() instanceof BucketItem)
             return;
 
-        stack.subtractAmount(1);
+        stack.decrement(1);
         world.playSound(player, pos, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.BLOCKS, 1f, 1f);
         world.setBlockState(pos, state.with(LEVEL, lavaLevel - 1));
         setFluidFromLevel(world, pos);
@@ -122,7 +124,7 @@ public abstract class CauldronBlockMixin extends Block implements FluidDrainable
                     player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 }
 
-                player.increaseStat(Stats.FILL_CAULDRON);
+                player.incrementStat(Stats.FILL_CAULDRON);
                 placeFluid(world, pos, state, 3, new FluidProperty.Wrapper(((FluidAccessor) item).cotton_getFluid()));
                 world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }

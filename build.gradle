@@ -11,7 +11,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "net.fabricmc:fabric-loom:0.2.0-SNAPSHOT" //Don't backdate before 0.2.0; features in this version prevent messy workarounds!
+		classpath "net.fabricmc:fabric-loom:0.2.6-SNAPSHOT" //Don't backdate before 0.2.0; features in this version prevent messy workarounds!
 		classpath "com.github.jengelman.gradle.plugins:shadow:5.0.0"
 	}
 }
@@ -47,7 +47,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:"+project.ext.mappings
 	modCompile "net.fabricmc:fabric-loader:"+project.ext.loader
 	if (project.ext.fabricMod!=null) {
-		modCompile "net.fabricmc:fabric:"+project.ext.fabricMod
+		modCompile "net.fabricmc.fabric-api:fabric-api:"+project.ext.fabricMod
 	}
 	if (project.ext.silkMod!=null) {
 		modCompile "io.github.prospector.silk:SilkAPI:"+project.ext.silkMod
@@ -86,8 +86,8 @@ shadowJar {
 
 if (ext.needsShadow) { //If we're using shadow, we need to let remap know it's remapping the shadowJar
 	remapJar {
-		dependsOn shadowJar
-		jar = shadowJar.archivePath
+		dependsOn tasks.shadowJar
+		input = shadowJar.archivePath
 	}
 }
 
